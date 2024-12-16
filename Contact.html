@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link class="ic" rel="icon" href="favicon.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .al{
+            border-radius: 50%;
+        }
+        #rm{
+            height: 100%;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            max-width: 120px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-bottom: 30px;
+        }
+
+        .info {
+            flex: 1 1 200px;
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .info:hover {
+            transform: scale(1.05);
+        }
+
+        .info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffeb3b;
+        }
+
+        .info p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        .contact-form {
+            text-align: center;
+        }
+
+        .contact-form h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 10px;
+        }
+
+        form .form-group {
+            position: relative;
+        }
+
+        form .form-group label {
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            background: #6a11cb;
+            color: #fff;
+            padding: 0 5px;
+            font-size: 0.9rem;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        form input::placeholder, form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        form textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        form button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #ffeb3b;
+            color: #333;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        form button:hover {
+            background: #ffd700;
+        }
+
+        .home-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .home-button a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: #ffeb3b;
+            color: #333;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+
+        .home-button a:hover {
+            background: #ffd700;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .info {
+                flex: 1 1 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-form h2 {
+                font-size: 1.5rem;
+            }
+
+            form input, form textarea {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            form button {
+                font-size: 1rem;
+            }
+
+            .home-button a {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img class="al" src="./assets/images/logoa.jpeg" alt="Appreciative Learning Logo">
+            <h1>Contact Us</h1>
+        </div>
+
+        <div class="contact-info">
+            <div class="info">
+                <h3>Address</h3>
+                <p>70-80 Upper St Norwich NR2</p>
+            </div>
+            <div class="info">
+                <h3>Phone</h3>
+                <p>+01 123 4567 890</p>
+            </div>
+            <div class="info">
+                <h3>Email</h3>
+                <p>learningappreciative@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form action="/submit" method="post">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Write your message" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="home-button">
+            <a href="index.html">Return to Home</a>
+        </div>
+    </div>
+</body>
+</html>
