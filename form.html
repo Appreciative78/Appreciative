@@ -1,388 +1,548 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scholarship Application Form</title>
-    <link class="ic" rel="icon" href="favicon.png" type="image/png">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.cs" />
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(to right, #f4f4f4, #e4e4e4);
-            color: #333;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background: #fff;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        h2 {
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #555;
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 5px;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input, select, textarea {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 15px;
-        }
-
-        input[type="file"] {
-            border: none;
-        }
-
-        button {
-            background: #007bff;
-            color: #fff;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 18px;
-            width: 100%;
-            transition: background 0.3s ease;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            width: 80%;
-            max-width: 400px;
-        }
-
-        .modal-content h3 {
-            margin-bottom: 20px;
-            color: #155724;
-        }
-
-        .modal-content button {
-            background: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .modal-content button:hover {
-            background: #0056b3;
-        }
-
-        .row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .col {
-            flex: 1;
-        }
-        .container {
-    max-width: 900px;
-    margin: 20px auto;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* Google Font CDN Link */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  min-height: 100vh;
+  width: 100%;
+  background: #c8e8e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.right-side .input-box input::placeholder,
+.right-side .input-box select option:first-child {
+  color: #afafb6; /* Light gray placeholder color */
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 10px;
+/* Placeholder color */
+.right-side .input-box input::placeholder,
+.right-side .input-box select option:first-child {
+  color: #afafb6; /* Light gray placeholder color */
 }
 
-hr {
-    border: none;
-    border-top: 3px solid #0078ff;
-    margin: 10px 0 20px;
+/* Text color when user enters data */
+.right-side .input-box input,
+.right-side .input-box select,
+.right-side .input-box textarea {
+  color: #000; /* Black text color for entered data */
 }
 
-.upload-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+/* For date input placeholder in modern browsers */
+.right-side .input-box input[type="date"]::-webkit-datetime-edit {
+  color: #afafb6; /* Light gray for date placeholder */
 }
 
-.upload-box {
-    background: #f1f5f8;
-    padding: 15px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    text-align: center;
+.right-side .input-box input[type="date"]:focus::-webkit-datetime-edit,
+.right-side .input-box input[type="date"]:valid::-webkit-datetime-edit {
+  color: #000; /* Black text color when data is entered */
 }
 
-label {
-    display: block;
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    font-weight: bold;
+/* Ensure dropdown has black text for selected options */
+.right-side .input-box select option:not(:first-child) {
+  color: #000; /* Black for selected options */
 }
 
-input[type="file"] {
-    display: block;
+.Add{
+  font-size: 18px;
+  color: black;
+  text-transform:;
+  font-family: sans-serif;
+  font-style:initial;
+  color: #3e2093;
+}
+
+
+
+.container {
+  max-width: 1100px;
+  width: 100%;
+  background: #fff;
+  border-radius: 6px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.container .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .content .left-side {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  position: relative;
+}
+.content .left-side::before {
+  content: "";
+  position: absolute;
+  height: 70%;
+  width: 2px;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #afafb6;
+}
+.content .left-side .details {
+  margin: 14px;
+  text-align: center;
+}
+.content .left-side .details i {
+  font-size: 30px;
+  color: #3e2093;
+  margin-bottom: 10px;
+}
+.content .left-side .details .topic {
+  font-size: 18px;
+  font-weight: 500;
+}
+.content .left-side .details .text-one,
+.content .left-side .details .text-two {
+  font-size: 14px;
+  color: #afafb6;
+}
+
+.container .content .right-side {
+  width: 75%;
+  margin-left: 75px;
+}
+.content .right-side .topic-text {
+  font-size: 23px;
+  font-weight: 600;
+  color: #3e2093;
+}
+.right-side .input-box {
+  height: 55px;
+  width: 100%;
+  margin: 12px 0;
+}
+.right-side .input-box::placeholder{
+
+  color: #afafb6; /* Light gray placeholder color */
+
+}
+.right-side .input-box input,
+.right-side .input-box textarea {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #f0f1f8;
+  border-radius: 6px;
+  padding: 0 15px;
+  resize: none;
+}
+.right-side .message-box {
+  min-height: 110px;
+}
+.right-side .input-box textarea {
+  padding-top: 6px;
+}
+.right-side .button {
+  display: inline-block;
+  margin-top: 12px;
+}
+.right-side .button input[type="button"] {
+  color: #fff;
+  font-size: 18px;
+  outline: none;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #3e2093;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.button input[type="button"]:hover {
+  background: #5029bc;
+}
+.right-side .input-box select {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #f0f1f8;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.right-side .input-box input[type="date"],
+.right-side .input-box select {
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background: #f0f1f8;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.left-side .details .text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #707070;
+  text-align: justify;
+}
+.left-side .details .topic {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #3e2093;
+}
+
+
+@media (max-width: 950px) {
+  .container {
+    width: 90%;
+    padding: 30px 40px 40px 35px;
+  }
+  .container .content .right-side {
+    width: 75%;
+    margin-left: 55px;
+  }
+}
+@media (max-width: 820px) {
+  .container {
+    margin: 40px 0;
+    height: 100%;
+  }
+  .container .content {
+    flex-direction: column-reverse;
+  }
+  .container .content .left-side {
     width: 100%;
-    padding: 6px;
-    cursor: pointer;
+    flex-direction: row;
+    margin-top: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .container .content .left-side::before {
+    display: none;
+  }
+  .container .content .right-side {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
-        @media (max-width: 768px) {
-            .row {
-                flex-direction: column;
-            }
+/* /// */
 
-            button {
-                font-size: 16px;
-            }
-        }
+      .home-button button {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      .home-button button:hover {
+        background-color: darkblue;
+      }
+      .button input[type="submit"] {
+        background-color: blue;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+      }
+      .button input[type="submit"]:hover {
+        background-color: darkblue;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Scholarship Application Form</h1>
-        <form method="Post" id="scholarshipForm">
-            <h2>Personal Information</h2>
-            <div class="row">
-                <div class="form-group col">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group col">
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" name="dob" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col">
-                    <label for="gender">Gender</label>
-                    <select id="gender" name="gender" required>
-                        <option value="">Select</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group col">
-                    <label for="nationality">Nationality</label>
-                    <input type="text" id="nationality" name="nationality" required>
-                </div>
-            </div>
+      <div class="home-button">
+        <button onclick="goToHome()">Home</button>
+      </div>
+      <div class="content">
+        <div class="left-side">
+  <div class="instructions details">
+    <div class="topic">Instructions for Filling Out the Scholarship Form</div>
+    <p class="text">
+      Before starting the form, carefully read through all sections to understand the required information.
+      Ensure you have the necessary documents and details ready for a smooth application process.
+    </p>
+  </div>
+  
+  <div class="personal-info details">
+    <div class="topic">Personal Information</div>
+    <p class="text">
+      Enter your full name exactly as it appears on your official documents. Ensure the provided date of birth is accurate and formatted correctly. Use the dropdown menu to select your gender.
+    </p>
+  </div>
+  
+  <div class="communication details">
+    <div class="topic">Communication Details</div>
+    <p class="text">
+      Provide your nationality along with the city, state, and pincode for your area. Enter your complete address, ensuring clarity and correctness.
+    </p>
+  </div>
+  
+  <div class="format-accuracy details">
+    <div class="topic">Format and Accuracy</div>
+    <p class="text">
+      All entered information must match your official records. Pay attention to capitalization and correct spelling, especially for names and addresses. Follow specific input field requirements, such as using only alphabets where required.
+    </p>
+  </div>
+  <div class="format-accuracy details">
+    <div class="topic">Mandatory Fields</div>
+    <p class="text">
+      Fields marked with asterisks (*) or highlighted as required must be completed. The form will not be accepted if any of these fields are left blank.
+    </p>
+  </div>
+  <div class="format-accuracy details">
+    <div class="topic">Submission</div>
+    <p class="text">
+      Review all the information before clicking the Submit button.Once submitted, changes may not be possible. Double-check for typos or errors.
+    </p>
+  </div>
+  <div class="format-accuracy details">
+    <div class="topic">Follow-Up</div>
+    <p class="text">
+      After submission, you may receive a confirmation email or notification. Keep it for your records.
+    </p>
+  </div>
+  <div class="format-accuracy details">
+    <div class="topic">Assistance</div>
+    <p class="text">
+      If you encounter difficulties, reach out to the scholarship office or designated contact person.
+    </p>
+  </div>
+  <div class="format-accuracy details">
+    <div class="topic">Short Notice for Students</div>
+    <p class="text">
+      If you are selected for the next round of the scholarship, you will be notified via email.
+    </p>
+  </div>
+</div>
 
-            <div class="form-group">
-                <label for="address">Address</label>
-                <textarea id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
-            </div>
+        <div class="right-side">
+          <div class="topic-text">Scholarship Application Form</div>
+          
 
-            <div class="row">
-                <div class="form-group col">
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" required>
-                </div>
-                <div class="form-group col">
-                    <label for="state">State</label>
-                    <input type="text" id="state" name="state" required>
-                </div>
-            </div>
+<!--------------------Form Start-------------------------> 
+          <form id="scholarshipForm">
+            <div class="input-box">
+              <input type="text" id="name" name="name" placeholder="Enter your name" pattern="[A-Za-z\s]+" required />
+           </div>
+          <div class="input-box">
+             <input type="date" id="dob" name="dob" placeholder="Date Of Birth" required />
+          </div>
+          <div class="input-box">
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Select Gender</      option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
 
-            <div class="row">
-                <div class="form-group col">
-                    <label for="pincode">Pincode</label>
-                    <input type="text" id="pincode" name="pincode" required>
-                </div>
-                <div class="form-group col">
-                    <label for="mobile">Mobile Number</label>
-                    <input type="tel" id="mobile" name="mobile" required>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label for="altMobile">Alternate Mobile Number</label>
-                <input type="tel" id="altMobile" name="altMobile">
-            </div>
+<!-----------------Address Information Sec--------->
+          <div class="Comunication-details">
+            <h2 class="Add">
+              Communication Details
+            </h2>
+          </div>
 
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="example@example.com" required>
-            </div>
 
-            <div class="row">
-                <div class="form-group col">
-                    <label for="fatherName">Father Name</label>
-                    <input type="text" id="fatherName" name="fatherName" required>
-                </div>
-                <div class="form-group col">
-                    <label for="motherName">Mother Name</label>
-                    <input type="text" id="motherName" name="motherName" required>
-                </div>
-                
+          <div class="input-box">
+            <input type="Nationality" id="Nationality" name="nationality" placeholder="Nationality" required />
+          </div>
+            <div class="input-box">
+            <input type="city" id="city" name="city" placeholder="Enter your City" required />
+          </div>
+          <div class="input-box">
+            <input type="state" id="state" name="state" placeholder="Enter your State" required />
+          </div>
+            <div class="input-box">
+            <input type="pincode" id="pincode" name="pincode" placeholder="Enter your Pincode" required />
+          </div>          
+          <div class="input-box message-box">
+            <textarea id="address" name="address" placeholder="Enter your Address" required></textarea>
+          </div>
+<!--------------------Phone And Email Sec--------------->
+          <div class="Comunication-details">
+            <h2 class="Add">
+              Contact's Details
+            </h2>
+          </div>
+          <div class="input-box">
+            <input type="phone" id="phone" name="mobile" placeholder="Enter your Phone Number" required />
+          </div>
+          <div class="input-box">
+            <input type="alphone" id="altphone" name="altMobile" placeholder="Enter your Alternate Phone Number"  required />
+          </div>
+          <div class="input-box">
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
+          </div>
 
-            </div>
-            <div class="row">
-                <div class="form-group col">
-                    <label for="fatherName">Father's Occupation</label>
-                    <input type="text" id="fatherNameo" name="fatherNameo" required>
-                </div>
-                <div class="form-group col">
-                    <label for="motherName">Mother's Occupation</label>
-                    <input type="text" id="motherNameo" name="motherNameo" required>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="form-group col">
-                    <label for="fatherName">Board Name</label>
-                    <input type="text" id="fatherNameo" name="bname" required>
-                </div>
-                <div class="form-group col">
-                    <label for="motherName">Class 10<sup>th</sup> Roll Number</label>
-                    <input type="text" id="motherNameo" name="rollnumber" required>
-                </div>
-                
-            </div>
-            <div class="row">
-                <div class="form-group col">
-                    <label for="fatherName">Board Name</label>
-                    <input type="text" id="fatherNameo" name="b12name" required>
-                </div>
-                <div class="form-group col">
-                    <label for="motherName">Class 12<sup>th</sup> Roll Number</label>
-                    <input type="text" id="motherNameo" name="roll12number" required>
-                </div>
-                
-            </div>
-            <div class="form-group">
-                <label for="altMobile">Aadhar Number</label>
-                <input type="tel" id="altMobile" name="aadhar">
-            </div>
-            <div class="container">
-            <h2>Academic Information</h2>
-            <div class="row">
-                <div class="form-group col">
-                    <label for="highestQualification">Highest Qualification</label>
-                    <select id="highestQualification" name="highestQualification" required>
-                        <option value="">Select</option>
-                        <option value="10">10</option>
-                        <option value="10+2">10+2</option>
-                        <option value="Diploma">Diploma</option>
-                        <option value="Graduate">Graduate</option>
-                        <option value="Post Graduate">Post Graduate</option>
-                        <option value="PhD">PhD</option>
-                    </select>
-                </div>
-                <div class="form-group col">
-                    <label for="preparation">Currently Preparing For</label>
-                    <select id="preparation" name="preparation">
-                        <option value="">Select</option>
-                        <option value="UPSC">UPSC</option>
-                        <option value="UPPSC">BPSC</option>
-                        <option value="BPSC">UPPSC</option>
-                        <option value="BPSC">MPPSC</option>
-                        <option value="SSC-MTS">SSC-MTS</option>
-                        <option value="SSC-CGL">SSC-CGL</option>
-                        <option value="Railway ALP">Railway-ALP</option>
-                        <option value="Railway Technician">Railway-Technician</option>
-                        <option value="Railway Group-D">Railway Group-D</option>
-                    </select>
-                </div>
-            </div>
+<!------------------parents and Work Details---------->
+          <div class="Comunication-details">
+            <h2 class="Add">
+              Parents's Details
+            </h2>
+          </div>
 
-            <div class="form-group">
-                <label for="exam">Your Upcoming Exam</label>
-                <select id="exam" name="exam">
-                    <option value="">Select</option>
-                    <option value="UPSC-Pre">UPSC-Pre</option>
-                    <option value="UPPSC-Pre">UPPSC-Pre</option>
-                    <option value="MPPSC-Pre">MPPSC-Pre</option>
-                    <option value="BPSC-Pre">BPSC-Pre</option>
-                    <option value="SSC-MTS">SSC-MTS</option>
-                    <option value="SSC-CGL">SSC-CGL</option>
-                    <option value="Railway ALP">Railway-ALP</option>
-                    <option value="Railway Technician">Railway-Technician</option>
-                    <option value="Railway Group-D">Railway-Group-D</option>
-                </select>
-            </div>
+           <div class="input-box">
+            <input type="fname" id="fname" name="fatherName" placeholder="Enter your Father Name" required />
+          </div>
+           <div class="input-box">
+            <input type="mname" id="mname" name="motherName" placeholder="Enter your Mother Name" required />
+          </div>
+          <div class="input-box">
+            <input type="nameof" id="mnameof" name="fatherNameo" placeholder="Father's Occupation" required />
+          </div>
 
-            <h2>Bank Details</h2>
-            <div class="form-group">
-                <label for="bankName">Bank Name</label>
-                <input type="text" id="bankName" name="bankName" required>
-            </div>
+          <div class="input-box">
+            <input type="nameom" id="mnameom" name="motherNameo" placeholder="Mother's Occupation" required />
+          </div>
 
-            <div class="form-group">
-                <label for="accountNumber">Account Number</label>
-                <input type="text" id="accountNumber" name="accountNumber" required>
-            </div>
+<!----------------Academic Information--------------->
+          <div class="Comunication-details">
+            <h2 class="Add">
+              Academic Information - I
+            </h2>
+          </div>
 
-            <div class="form-group">
-                <label for="ifscCode">IFSC Code</label>
-                <input type="text" id="ifscCode" name="ifscCode" required>
-            </div>
+          <div class="input-box">
+            <input type="nameom" id="BoardName" name="bname" placeholder="Class 10 Board Name" required />
+          </div>
 
-            
+          <div class="input-box">
+            <input type="nameom" id="class10" name="rollnumber" placeholder="Class 10 Roll Number" required />
+          </div>
+          <div class="input-box">
+            <input type="nameom" id="BoardName12" name="b12name" placeholder="Class 12 Board Name" required />
+          </div>
+          <div class="input-box">
+            <input type="nameom" id="class12" name="roll12number" placeholder="Class 12 Roll Number" required />
+          </div>
+          <div class="input-box">
+            <input type="nameom" id="aadhar" name="aadhar" placeholder="Aadhar Number" required />
+          </div>
 
-            <button type="submit">Submit</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!----------------Academic Information--------------->
+          <div class="Comunication-details">
+            <h2 class="Add">
+              Academic Information - II
+            </h2>
+          </div>
+          <div class="input-box">
+            <select id="gender" name="highestQualification" required>
+              <option value="" disabled selected>Highest Qualification</option>
+              <option value="10">10</option>
+              <option value="10+2">10+2</option>
+              <option value="Diploma">Diploma</option>
+              <option value="Graduate">Graduate</option>
+              <option value="Post Graduate">Post Graduate</option>
+              <option value="PhD">PhD</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <select id="gender" name="preparation" required>
+              <option value="" disabled selected>Currently Preparing For</option>
+              <option value="UPSC">UPSC</option>
+                <option value="UPPSC">BPSC</option>
+                <option value="BPSC">UPPSC</option>
+                <option value="BPSC">MPPSC</option>
+                <option value="SSC-MTS">SSC-MTS</option>
+                <option value="SSC-CGL">SSC-CGL</option>
+                <option value="Railway ALP">Railway-ALP</option>
+                <option value="Railway Technician">Railway-Technician</option>
+                <option value="Railway Group-D">Railway Group-D</option>
+            </select>
+          </div>
+          <div class="input-box">
+            <select id="gender" name="exam" required>
+              <option value="" disabled selected>Your Upcoming Exam</option>
+                <option value="UPSC-Pre">UPSC-Pre</option>
+                <option value="UPPSC-Pre">UPPSC-Pre</option>
+                <option value="MPPSC-Pre">MPPSC-Pre</option>
+                <option value="BPSC-Pre">BPSC-Pre</option>
+                <option value="SSC-MTS">SSC-MTS</option>
+                <option value="SSC-CGL">SSC-CGL</option>
+                <option value="Railway ALP">Railway-ALP</option>
+                <option value="Railway Technician">Railway-Technician</option>
+                <option value="Railway Group-D">Railway-Group-D</option>
+            </select>
+          </div>
+
+<!------------------Bank Details------------------>
+
+          <div class="Comunication-details">
+            <h2 class="Add">
+              Bank Details
+            </h2>
+          </div>
+          
+          <div class="input-box">
+            <input type="nameom" id="bankName" name="bankName" placeholder="Bank Name" required />
+          </div>
+          <div class="input-box">
+            <input type="nameom" id="accountNumber" name="accountNumber" placeholder="Account Number" required />
+          </div>
+          <div class="input-box">
+            <input type="nameom" id="ifscCode" name="ifscCode" placeholder="Ifsc Code" required />
+          </div>
+
+
+
+
+
+
+
+
+
+
+<!------------------form table end---------------->
+            <div class="button">
+            <input type="submit" value="Send Now" />
+          </div>
         </form>
 
-        <div class="modal" id="successModal">
-            <div class="modal-content">
-                <h3>Your form has been successfully submitted!</h3>
-                <button id="closeModal">Close</button>
-            </div>
         </div>
+      </div>
     </div>
+
+  
 <script>
     document.getElementById('scholarshipForm').addEventListener('submit', function (e) {
         e.preventDefault();
@@ -406,5 +566,6 @@ input[type="file"] {
             });
     });
 </script>
-</body>
+</script> 
+  </body>
 </html>
