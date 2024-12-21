@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <title>Contact Us</title>
+    <title>Scholarship Form</title>
     <link rel="stylesheet" href="style.cs" />
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
@@ -208,6 +208,12 @@ body {
   margin-bottom: 10px;
   color: #3e2093;
 }
+.im{
+  height:100%;
+  width: 100%;
+  border-radius: 50%;
+  margin-top:3%;
+}
 
 
 @media (max-width: 950px) {
@@ -280,6 +286,9 @@ body {
       <div class="content">
         <div class="left-side">
   <div class="instructions details">
+    <div class="topic">
+      <img class="im" src="assets/images/logoa.jpeg">
+      </div>
     <div class="topic">Instructions for Filling Out the Scholarship Form</div>
     <p class="text">
       Before starting the form, carefully read through all sections to understand the required information.
@@ -346,14 +355,19 @@ body {
 <!--------------------Form Start-------------------------> 
           <form id="scholarshipForm">
             <div class="input-box">
-              <input type="text" id="name" name="name" placeholder="Enter your name" pattern="[A-Za-z\s]+" required />
+              <input type="text" id="name" name="name" placeholder="Enter your name*" pattern="[A-Za-z\s]+" required />
            </div>
+            <div class="Comunication-details">
+            <h2 class="Add">
+              Date Of Birth
+            </h2>
+          </div>
           <div class="input-box">
-             <input type="date" id="dob" name="dob" placeholder="Date Of Birth" required />
+             <input type="date" id="dob" name="dob" placeholder="Date Of Birth*" required />
           </div>
           <div class="input-box">
             <select id="gender" name="gender" required>
-              <option value="" disabled selected>Select Gender</      option>
+              <option value="" disabled selected>Select Gender*</      option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Other">Other</option>
@@ -370,19 +384,57 @@ body {
 
 
           <div class="input-box">
-            <input type="Nationality" id="Nationality" name="nationality" placeholder="Nationality" required />
+            <input type="Nationality" id="Nationality" name="nationality" placeholder="Nationality*" required />
           </div>
             <div class="input-box">
-            <input type="city" id="city" name="city" placeholder="Enter your City" required />
+            <input type="city" id="city" name="city" placeholder="Enter your City*" required />
           </div>
           <div class="input-box">
-            <input type="state" id="state" name="state" placeholder="Enter your State" required />
+            <select id="state" name="state" required>
+                <option value="" disabled selected>Select your State*</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Ladakh">Ladakh</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Puducherry">Puducherry</option>
+            </select>
           </div>
-            <div class="input-box">
-            <input type="pincode" id="pincode" name="pincode" placeholder="Enter your Pincode" required />
+          <div class="input-box">
+            <input type="pincode" id="pincode" name="pincode" placeholder="Enter your Pincode*" required />
           </div>          
           <div class="input-box message-box">
-            <textarea id="address" name="address" placeholder="Enter your Address" required></textarea>
+            <textarea id="address" name="address" placeholder="Enter your Address*" required></textarea>
           </div>
 <!--------------------Phone And Email Sec--------------->
           <div class="Comunication-details">
@@ -391,13 +443,13 @@ body {
             </h2>
           </div>
           <div class="input-box">
-            <input type="phone" id="phone" name="mobile" placeholder="Enter your Phone Number" required />
+            <input type="phone" id="phone" name="mobile" placeholder="Enter your Phone Number*" required />
           </div>
           <div class="input-box">
-            <input type="alphone" id="altphone" name="altMobile" placeholder="Enter your Alternate Phone Number"  required />
+            <input type="alphone" id="altphone" name="altMobile" placeholder="Enter your Alternate Phone Number*"  required />
           </div>
           <div class="input-box">
-            <input type="email" id="email" name="email" placeholder="Enter your email" required />
+            <input type="email" id="email" name="email" placeholder="Enter your email*" required />
           </div>
 
 <!------------------parents and Work Details---------->
@@ -408,17 +460,17 @@ body {
           </div>
 
            <div class="input-box">
-            <input type="fname" id="fname" name="fatherName" placeholder="Enter your Father Name" required />
+            <input type="fname" id="fname" name="fatherName" placeholder="Enter your Father Name*" required />
           </div>
            <div class="input-box">
-            <input type="mname" id="mname" name="motherName" placeholder="Enter your Mother Name" required />
+            <input type="mname" id="mname" name="motherName" placeholder="Enter your Mother Name*" required />
           </div>
           <div class="input-box">
-            <input type="nameof" id="mnameof" name="fatherNameo" placeholder="Father's Occupation" required />
+            <input type="nameof" id="mnameof" name="fatherNameo" placeholder="Father's Occupation*" required />
           </div>
 
           <div class="input-box">
-            <input type="nameom" id="mnameom" name="motherNameo" placeholder="Mother's Occupation" required />
+            <input type="nameom" id="mnameom" name="motherNameo" placeholder="Mother's Occupation*" required />
           </div>
 
 <!----------------Academic Information--------------->
@@ -429,20 +481,20 @@ body {
           </div>
 
           <div class="input-box">
-            <input type="nameom" id="BoardName" name="bname" placeholder="Class 10 Board Name" required />
+            <input type="nameom" id="BoardName" name="bname" placeholder="Class 10 Board Name*" required />
           </div>
 
           <div class="input-box">
-            <input type="nameom" id="class10" name="rollnumber" placeholder="Class 10 Roll Number" required />
+            <input type="nameom" id="class10" name="rollnumber" placeholder="Class 10 Roll Number*" required />
           </div>
           <div class="input-box">
-            <input type="nameom" id="BoardName12" name="b12name" placeholder="Class 12 Board Name" required />
+            <input type="nameom" id="BoardName12" name="b12name" placeholder="Class 12 Board Name*" required />
           </div>
           <div class="input-box">
-            <input type="nameom" id="class12" name="roll12number" placeholder="Class 12 Roll Number" required />
+            <input type="nameom" id="class12" name="roll12number" placeholder="Class 12 Roll Number*" required />
           </div>
           <div class="input-box">
-            <input type="nameom" id="aadhar" name="aadhar" placeholder="Aadhar Number" required />
+            <input type="nameom" id="aadhar" name="aadhar" placeholder="Aadhar Number*" required />
           </div>
 
 
@@ -467,7 +519,7 @@ body {
           </div>
           <div class="input-box">
             <select id="gender" name="highestQualification" required>
-              <option value="" disabled selected>Highest Qualification</option>
+              <option value="" disabled selected>Highest Qualification*</option>
               <option value="10">10</option>
               <option value="10+2">10+2</option>
               <option value="Diploma">Diploma</option>
@@ -478,7 +530,7 @@ body {
           </div>
           <div class="input-box">
             <select id="gender" name="preparation" required>
-              <option value="" disabled selected>Currently Preparing For</option>
+              <option value="" disabled selected>Currently Preparing For*</option>
               <option value="UPSC">UPSC</option>
                 <option value="UPPSC">BPSC</option>
                 <option value="BPSC">UPPSC</option>
@@ -492,7 +544,7 @@ body {
           </div>
           <div class="input-box">
             <select id="gender" name="exam" required>
-              <option value="" disabled selected>Your Upcoming Exam</option>
+              <option value="" disabled selected>Your Upcoming Exam*</option>
                 <option value="UPSC-Pre">UPSC-Pre</option>
                 <option value="UPPSC-Pre">UPPSC-Pre</option>
                 <option value="MPPSC-Pre">MPPSC-Pre</option>
@@ -514,13 +566,13 @@ body {
           </div>
           
           <div class="input-box">
-            <input type="nameom" id="bankName" name="bankName" placeholder="Bank Name" required />
+            <input type="nameom" id="bankName" name="bankName" placeholder="Bank Name*" required />
           </div>
           <div class="input-box">
-            <input type="nameom" id="accountNumber" name="accountNumber" placeholder="Account Number" required />
+            <input type="nameom" id="accountNumber" name="accountNumber" placeholder="Account Number*" required />
           </div>
           <div class="input-box">
-            <input type="nameom" id="ifscCode" name="ifscCode" placeholder="Ifsc Code" required />
+            <input type="nameom" id="ifscCode" name="ifscCode" placeholder="Ifsc Code*" required />
           </div>
 
 
@@ -534,7 +586,7 @@ body {
 
 <!------------------form table end---------------->
             <div class="button">
-            <input type="submit" value="Send Now" />
+            <input type="submit" value="Submit" />
           </div>
         </form>
 
@@ -566,6 +618,10 @@ body {
             });
     });
 </script>
+<script>
+  function goToHome() {
+    window.location.href = "index.html"; 
+  }
 </script> 
-  </body>
+</body>
 </html>
