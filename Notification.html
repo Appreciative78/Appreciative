@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification</title>
+    <style>
+        /* Prevent horizontal scrollbar */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden; /* Remove horizontal scrollbar */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            font-weight: bold;
+            overflow: hidden;
+        }
+
+        /* Removed background image */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: none;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        .important {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .checkbox-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .checkbox-container input {
+            margin-right: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        /* Notification bar at the top */
+        .notification-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            font-size: 18px;
+            text-align: center;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        /* Typing effect styles for header */
+        .typing-text {
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 0;
+            border-right: 3px solid #fff;
+            animation: typing 5s steps(80) 1s forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+
+        /* For normal paragraph display without typing effect */
+        .normal-paragraph {
+            text-align: justify;
+            margin-top: 20px;
+            color: #333;
+            font-size: 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+                width: 100%;
+                margin: 0;
+            }
+
+            .container {
+                padding: 15px;
+                max-width: 100%;
+                width: 100%;
+            }
+
+            .checkbox-container {
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            button {
+                width: 100%;
+                font-size: 18px;
+                padding: 12px;
+            }
+
+            .notification-bar {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .normal-paragraph {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 14px;
+            }
+
+            .normal-paragraph {
+                font-size: 13px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Notification bar at the top -->
+    <div class="notification-bar">
+        <div class="typing-text">
+            Important Notification From Appreciative Learning: Be cautious of OTP requests!
+        </div>
+    </div>
+
+    <!-- Content of the page -->
+    <div class="container">
+        <h2 class="typing-text">Important Notification</h2>
+
+        <!-- First Paragraph without typing effect (normal display) -->
+        <p class="normal-paragraph">
+            Dear user, please be cautious! If you receive a call or SMS claiming to be from <span class="important">"Appreciative Learning"</span> and requesting an <span class="important">OTP</span>, do not share your OTP with anyone. 
+            <span class="important">"Appreciative Learning"</span> never asks for your OTP via calls, messages, or any other medium. 
+            Stay alert and protect yourself from potential <span class="important">fraud</span>.
+        </p>
+
+        <!-- Second Paragraph without typing effect (normal display) -->
+        <p class="normal-paragraph">
+            प्रिय उपयोगकर्ता, कृपया सतर्क रहें! यदि आपको <span class="important">"Appreciative Learning"</span> के नाम से कोई कॉल या संदेश प्राप्त होता है और आपसे <span class="important">OTP</span> साझा करने को कहा जाता है, तो कृपया अपना OTP किसी को न दें। 
+            <span class="important">"Appreciative Learning"</span> कभी भी कॉल, संदेश, या किसी अन्य माध्यम से आपका OTP नहीं मांगता। सतर्क रहें और संभावित <span class="important">धोखाधड़ी</span> से बचें।
+        </p>
+
+        <!-- Checkbox to acknowledge the notice -->
+        <div class="checkbox-container">
+            <input type="checkbox" id="acknowledge" onclick="toggleButton()">
+            <label for="acknowledge">I have read and understood the above notice.</label>
+        </div>
+
+        <!-- Continue button that redirects after acknowledgment -->
+        <button id="continue" disabled onclick="proceed()">Continue</button>
+    </div>
+
+    <script>
+        function toggleButton() {
+            const checkbox = document.getElementById('acknowledge');
+            const button = document.getElementById('continue');
+            button.disabled = !checkbox.checked;
+        }
+
+        function proceed() {
+            window.location.href = "form.html";  // Replace with your actual next page URL
+        }
+    </script>
+
+</body>
+</html>
