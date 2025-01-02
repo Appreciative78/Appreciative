@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Form</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+    <h2>Scholarship Application Form</h2>
+    <form id="scholarshipForm">
+        <input type="text" name="name" id="name" placeholder="Enter your name" required><br><br>
+        <input type="email" name="email" id="email" placeholder="Enter your email" required><br><br>
+        <div class="button">
+            <!-- Submit Button as input element -->
+            <input id="submitButton" type="submit" value="Submit" />
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('scholarshipForm');
+            const submitButton = document.getElementById('submitButton');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent default form submission
+
+                // Disable the submit button to prevent multiple submissions
+                submitButton.disabled = true;
+                submitButton.value = 'Submitting...';
+
+                const url = 'https://script.google.com/macros/s/AKfycbxPLc0hp30m39a4TzHN-jBW3repehcgYDVdmNkr9asKnq1lKNmCwN2urcNZmGcZFnv6/exec';
+                const formData = new FormData(form);
+
+                fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.success) {
+                        // Notify user of success
+                        alert(result.message);
+
+                        // Prepare data for download
+                        const downloadData = {
+                            ID: result.data.id,
+                            Timestamp: result.data.timestamp,
+                            Name: result.data.name,
+                            Email: result.data.email
+                        };
+
+                        // Convert to JSON
+                        const jsonData = JSON.stringify(downloadData, null, 2);
+
+                        // Trigger download
+                        const blob = new Blob([jsonData], { type: 'application/json' });
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = `${result.data.id}_form_submission.json`;
+                        link.click();
+
+                        // Redirect after download
+                        window.location.href = 'Submit.html';
+                    } else {
+                        alert('Submission failed!');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error submitting form:', error);
+                    alert('An error occurred. Please try again.');
+                })
+                .finally(() => {
+                    // Re-enable the submit button
+                    submitButton.disabled = false;
+                    submitButton.value = 'Submit'; // Reset button text
+                });
+            });
+        });
+    </script>
+</body>
+</html>
