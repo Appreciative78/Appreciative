@@ -596,27 +596,39 @@ body {
 
   
 <script>
-    document.getElementById('scholarshipForm').addEventListener('submit', function (e) {
-        e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('scholarshipForm');
+    const submitButton = document.getElementById('submitButton');
 
-        let url = 'https://script.google.com/macros/s/AKfycbwBUGlhODFMHljekOPGz43MStK5erhRBrm98x6PwyUoykZfQx0AcCyxIsFQ1A7v7mPkFg/exec';
-        let scholarshipForm = document.querySelector('#scholarshipForm');
-        let formData = new FormData(scholarshipForm);
+    form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Disable the submit button to prevent multiple submissions
+        submitButton.disabled = true;
+        submitButton.value = 'Submitting...'; // Update button text
+
+        const url = 'https://script.google.com/macros/s/AKfycbwBUGlhODFMHljekOPGz43MStK5erhRBrm98x6PwyUoykZfQx0AcCyxIsFQ1A7v7mPkFg/exec';
+        const formData = new FormData(form);
 
         fetch(url, {
             method: 'POST',
             body: formData
         })
-            .then((response) => response.text())
-            .then((result) => {
+            .then(response => response.text())
+            .then(result => {
                 console.log('Form submitted successfully:', result);
-                window.location.href = 'Submit.html'; // रीडायरेक्शन
+                alert('Form submitted successfully!');
+                window.location.href = 'Submit.html'; // Redirect on success
             })
-            .catch((error) => {
+            .catch(error => {
                 console.error('Error submitting form:', error);
-                alert('An error occurred while submitting the form. Please try again.');
+                alert('An error occurred. Please try again.');
+                submitButton.disabled = false; // Re-enable button on error
+                submitButton.value = 'Submit'; // Reset button text
             });
     });
+});
+
 </script>
 <script>
   function goToHome() {
