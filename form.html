@@ -528,10 +528,11 @@ body {
               <option value="PhD">PhD</option>
             </select>
           </div>
-          <div class="input-box">
+         <div class="input-box">
             <select id="gender" name="preparation" required>
               <option value="" disabled selected>Currently Preparing For/वर्तमान में तैयारी कर रहा हूँ*</option>
-              <option value="UPSC">UPSC</option>
+                <optgroup style="text-transform: uppercase;" label="Popular Exam">
+                <option style="color: black" value="UPSC">UPSC</option>
                 <option value="UPPSC">BPSC</option>
                 <option value="BPSC">UPPSC</option>
                 <option value="BPSC">MPPSC</option>
@@ -540,20 +541,145 @@ body {
                 <option value="Railway ALP">Railway-ALP</option>
                 <option value="Railway Technician">Railway-Technician</option>
                 <option value="Railway Group-D">Railway Group-D</option>
+                </optgroup>
+                <optgroup style="text-transform: uppercase;" label="Banking Sector">
+                <option style="color: black;" value="ibps-po">IBPS PO</option>
+                <option value="ibps-clerk">IBPS Clerk</option>
+                <option value="sbi-po">SBI PO</option>
+                <option value="sbi-clerk">SBI Clerk</option>
+                <option value="rbi-assistant">RBI Assistant</option>
+                <option value="nabard-grade-a">NABARD Grade A/B</option>
+                <option value="rrb-officer">Regional Rural Banks Officer Scale</option>
+            </optgroup>
+            
+            <!-- SSC -->
+            <optgroup style="text-transform: uppercase;" label="Staff Selection Commission (SSC)">
+                <option style="color: black;" value="ssc-cgl">SSC CGL</option>
+                <option value="ssc-chsl">SSC CHSL</option>
+                <option value="ssc-mts">SSC MTS</option>
+                <option value="ssc-gd">SSC GD Constable</option>
+                <option value="ssc-je">SSC JE</option>
+                <option value="ssc-stenographer">SSC Stenographer</option>
+            </optgroup>
+            
+            <!-- Railways -->
+            <optgroup style="text-transform: uppercase;" label="Railways">
+                <option style="color: black;" value="rrb-ntpc">RRB NTPC</option>
+                <option value="rrb-group-d">RRB Group D</option>
+                <option value="rrb-je">RRB JE</option>
+                <option value="railway-apprentice">Railway Apprentice</option>
+                <option value="railway-paramedical">Railway Paramedical</option>
+            </optgroup>
+            
+            <!-- Defence -->
+            <optgroup style="text-transform: uppercase;" label="Defence">
+                <option style="color: black;" value="nda">NDA</option>
+                <option value="cds">CDS</option>
+                <option value="afcat">AFCAT</option>
+                <option value="coast-guard">Indian Coast Guard</option>
+                <option value="ssc-tech">SSC Tech (Army/Navy/Airforce)</option>
+            </optgroup>
+            
+            <!-- UPSC -->
+            <optgroup style="text-transform: uppercase;" label="UPSC">
+                <option style="color: black;" value="civil-services">Civil Services Exam (IAS, IPS)</option>
+                <option value="capf">CAPF</option>
+                <option value="ies">IES</option>
+                <option value="iss">ISS</option>
+                <option value="forest-services">Indian Forest Services</option>
+            </optgroup>
+            
+            <!-- State Exams -->
+            <optgroup style="text-transform: uppercase;" label="State-Level Exams">
+                <option style="color: black;" value="pcs">State PSC (PCS)</option>
+                <option value="village-development">Village Development Officer</option>
+                <option value="state-teacher-exam">State Teacher Exams (TET/CTET)</option>
+                <option value="patwari">Patwari</option>
+            </optgroup>
+            
+            <!-- Teaching -->
+            <optgroup style="text-transform: uppercase;" label="Teaching">
+                <option style="color: black;" value="ctet">CTET</option>
+                <option value="uptet">UPTET</option>
+                <option value="ssc-teacher">SSC Teacher</option>
+            </optgroup>
             </select>
           </div>
           <div class="input-box">
             <select id="gender" name="exam" required>
               <option value="" disabled selected>Your Upcoming Exam/आपकी आगामी परीक्षा*</option>
-                <option value="UPSC-Pre">UPSC-Pre</option>
-                <option value="UPPSC-Pre">UPPSC-Pre</option>
-                <option value="MPPSC-Pre">MPPSC-Pre</option>
-                <option value="BPSC-Pre">BPSC-Pre</option>
+                <optgroup style="text-transform: uppercase;" label="Popular Exam">
+                <option style="color: black" value="UPSC">UPSC</option>
+                <option value="UPPSC">BPSC</option>
+                <option value="BPSC">UPPSC</option>
+                <option value="BPSC">MPPSC</option>
                 <option value="SSC-MTS">SSC-MTS</option>
                 <option value="SSC-CGL">SSC-CGL</option>
                 <option value="Railway ALP">Railway-ALP</option>
                 <option value="Railway Technician">Railway-Technician</option>
-                <option value="Railway Group-D">Railway-Group-D</option>
+                <option value="Railway Group-D">Railway Group-D</option>
+                </optgroup>
+                <optgroup style="text-transform: uppercase;" label="Banking Sector">
+                <option style="color: black;" value="ibps-po">IBPS PO</option>
+                <option value="ibps-clerk">IBPS Clerk</option>
+                <option value="sbi-po">SBI PO</option>
+                <option value="sbi-clerk">SBI Clerk</option>
+                <option value="rbi-assistant">RBI Assistant</option>
+                <option value="nabard-grade-a">NABARD Grade A/B</option>
+                <option value="rrb-officer">Regional Rural Banks Officer Scale</option>
+            </optgroup>
+            
+            <!-- SSC -->
+            <optgroup style="text-transform: uppercase;" label="Staff Selection Commission (SSC)">
+                <option style="color: black;" value="ssc-cgl">SSC CGL</option>
+                <option value="ssc-chsl">SSC CHSL</option>
+                <option value="ssc-mts">SSC MTS</option>
+                <option value="ssc-gd">SSC GD Constable</option>
+                <option value="ssc-je">SSC JE</option>
+                <option value="ssc-stenographer">SSC Stenographer</option>
+            </optgroup>
+            
+            <!-- Railways -->
+            <optgroup style="text-transform: uppercase;" label="Railways">
+                <option style="color: black;" value="rrb-ntpc">RRB NTPC</option>
+                <option value="rrb-group-d">RRB Group D</option>
+                <option value="rrb-je">RRB JE</option>
+                <option value="railway-apprentice">Railway Apprentice</option>
+                <option value="railway-paramedical">Railway Paramedical</option>
+            </optgroup>
+            
+            <!-- Defence -->
+            <optgroup style="text-transform: uppercase;" label="Defence">
+                <option style="color: black;" value="nda">NDA</option>
+                <option value="cds">CDS</option>
+                <option value="afcat">AFCAT</option>
+                <option value="coast-guard">Indian Coast Guard</option>
+                <option value="ssc-tech">SSC Tech (Army/Navy/Airforce)</option>
+            </optgroup>
+            
+            <!-- UPSC -->
+            <optgroup style="text-transform: uppercase;" label="UPSC">
+                <option style="color: black;" value="civil-services">Civil Services Exam (IAS, IPS)</option>
+                <option value="capf">CAPF</option>
+                <option value="ies">IES</option>
+                <option value="iss">ISS</option>
+                <option value="forest-services">Indian Forest Services</option>
+            </optgroup>
+            
+            <!-- State Exams -->
+            <optgroup style="text-transform: uppercase;" label="State-Level Exams">
+                <option style="color: black;" value="pcs">State PSC (PCS)</option>
+                <option value="village-development">Village Development Officer</option>
+                <option value="state-teacher-exam">State Teacher Exams (TET/CTET)</option>
+                <option value="patwari">Patwari</option>
+            </optgroup>
+            
+            <!-- Teaching -->
+            <optgroup style="text-transform: uppercase;" label="Teaching">
+                <option style="color: black;" value="ctet">CTET</option>
+                <option value="uptet">UPTET</option>
+                <option value="ssc-teacher">SSC Teacher</option>
+            </optgroup>
             </select>
           </div>
 
