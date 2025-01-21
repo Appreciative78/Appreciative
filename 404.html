@@ -1,8 +1,6 @@
 <script>
     var path = window.location.pathname;
-    if (path.endsWith("/")) {
-        window.location.replace(path + "index.html");
-    } else {
+    if (!path.endsWith(".html") && path !== "/") {
         window.location.replace(path + ".html");
     }
 </script>
