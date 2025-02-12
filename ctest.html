@@ -58,31 +58,352 @@
       font-family: sans-serif;
       font-size:16px;
       font-weight: 700;
-
     }
     #courses{
       margin-top: 8%;
     }
-    
-    /*.scholarship-btn {
-    background-color: #1abc9c;   /* Teal color */
-    /*color: #fff;                 /* White text */
-    /*border: none;                /* No border */
-    /*padding: 12px 24px;          /* Padding for size */
-    /*font-size: 16px;             /* Font size */
-    /*font-weight: 500;            /* Medium font weight */
-    /*border-radius: 6px;          /* Rounded corners */
-    /*cursor: pointer;             /* Pointer cursor on /*hover */
-    /*transition: background-color 0.3s; /* Smooth /*transition */
 
-}
+    /* Ultra-Attractive Buy Now Button with Advanced Gradient */
+    .buy-now-btn {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      padding: 15px 30px;
+      margin-top: 15px;
+      background: linear-gradient(
+        45deg, 
+        #6a11cb 0%, 
+        #2575fc 100%
+      );
+      color: white;
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 
+        0 10px 20px rgba(37, 117, 252, 0.3),
+        0 5px 10px rgba(106, 17, 203, 0.2);
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+      overflow: hidden;
+      perspective: 1000px;
+    }
 
-/*.scholarship-btn:hover {
-    /*background-color: #16a085;   /* Slightly darker teal on hover */
-}/*
+    .buy-now-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        120deg, 
+        transparent, 
+        rgba(255,255,255,0.4), 
+        transparent
+      );
+      transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transform: skewX(-20deg);
+    }
 
+    .buy-now-btn::after {
+      content: '🚀 Buy Now';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+      transition: all 0.3s ease;
+      color: white;
+    }
 
+    .buy-now-btn:hover {
+      transform: translateY(-7px) rotateX(10deg);
+      box-shadow: 
+        0 15px 30px rgba(37, 117, 252, 0.4),
+        0 8px 15px rgba(106, 17, 203, 0.3);
+      background: linear-gradient(
+        45deg, 
+        #8e2de2 0%, 
+        #4a00e0 100%
+      );
+    }
+
+    .buy-now-btn:hover::before {
+      left: 100%;
+    }
+
+    .buy-now-btn:active {
+      transform: translateY(3px) rotateX(-5deg);
+      box-shadow: 
+        0 5px 10px rgba(37, 117, 252, 0.2),
+        0 2px 5px rgba(106, 17, 203, 0.1);
+      background: linear-gradient(
+        45deg, 
+        #4a00e0 0%, 
+        #8e2de2 100%
+      );
+    }
+
+    /* Responsive and Accessibility Enhancements */
+    @media (max-width: 768px) {
+      .buy-now-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+        letter-spacing: 1px;
+        border-radius: 12px;
+      }
+    }
+
+    .buy-now-btn:focus {
+      outline: 4px solid rgba(106, 17, 203, 0.4);
+      outline-offset: 3px;
+    }
+
+    /* Subtle Pulse Animation */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .buy-now-btn:hover {
+      animation: pulse 1.5s infinite;
+    }
+
+    /* Professional Modal Styles */
+    .course-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        
+        /* Centered flexbox */
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .course-modal-overlay.active,
+    .course-modal-overlay.show {
+        display: flex;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .course-modal-container {
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        max-width: 750px;  
+        width: 95%;
+        max-height: 550px; 
+        margin: auto;
+        padding: 0;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        transform: scale(0.7);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .course-modal-overlay.active .course-modal-container,
+    .course-modal-overlay.show .course-modal-container {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .course-modal-image-column {
+        flex: 0 0 40%;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        position: relative;
+    }
+
+    .course-modal-image {
+        max-width: 100%;
+        max-height: 400px;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .course-modal-details-column {
+        flex: 0 0 60%;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 15px;
+        font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .course-modal-title {
+        margin: 0 0 10px 0;
+        font-size: 1.5rem;
+        color: #2c3e50;
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .course-modal-description {
+        color: #34495e;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 0 0 10px 0;
+        opacity: 0.9;
+    }
+
+    .course-modal-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 10px 0;
+    }
+
+    .course-modal-price::before {
+        content: '₹';
+        color: #4a4a4a;
+        margin-right: 5px;
+        font-size: 1.25rem;
+    }
+
+    .proceed-checkout-btn {
+        width: 100%;
+        padding: 12px;
+        background-color: #3498db;  
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .proceed-checkout-btn:hover {
+        background-color: #2980b9;  
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .proceed-checkout-btn:disabled {
+        background-color: #bdc3c7;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .terms-conditions-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .terms-conditions-container input[type="checkbox"] {
+        margin-top: 3px;
+        transform: scale(1.2);
+        accent-color: #2c3e50;
+    }
+
+    .terms-conditions-container label {
+        color: #4a4a4a;
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .course-modal-container {
+            flex-direction: column;
+            max-height: 90vh;
+            width: 95%;
+        }
+
+        .course-modal-image-column,
+        .course-modal-details-column {
+            flex: 0 0 auto;
+            width: 100%;
+            padding: 15px;
+        }
+    }
   </style>
+
+  <!-- Course Modal -->
+  <div class="course-modal-overlay" id="courseModalOverlay">
+    <div class="course-modal-container">
+      <div class="course-modal-image-column">
+        <img src="" alt="Course Image" class="course-modal-image" id="courseModalImage">
+      </div>
+      <div class="course-modal-details-column">
+        <button class="close-modal-btn" id="courseModalCloseButton">
+          <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+        </button>
+        
+        <div class="modal-content">
+          <h2 class="course-modal-title" id="courseModalTitle"></h2>
+          <p class="course-modal-description" id="courseModalDescription"></p>
+          
+          <div class="course-modal-price" id="courseModalPrice"></div>
+          
+          <div class="terms-conditions-container">
+            <input type="checkbox" id="termsCheckbox">
+            <label for="termsCheckbox">
+              I understand this is a digital product, non-returnable, and will be delivered electronically.
+            </label>
+          </div>
+          
+          <button class="proceed-checkout-btn" id="proceedToCheckoutBtn" disabled>
+            Proceed to Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preload Key Resources -->
+  <link rel="preload" href="./assets/cim/py.webp" as="image">
+  <link rel="preload" href="./assets/cim/js.webp" as="image">
+  <link rel="preload" href="./assets/cim/sca.webp" as="image">
+  <link rel="preload" href="./assets/cim/go.webp" as="image">
+  <link rel="preload" href="./assets/cim/cn.webp" as="image">
+  <link rel="preload" href="./assets/cim/fd.webp" as="image">
+  <link rel="preload" href="./assets/cim/cc.webp" as="image">
+  <link rel="preload" href="./assets/cim/cd.webp" as="image">
+  <link rel="preload" href="./assets/cim/ml.webp" as="image">
+  <link rel="preload" href="./assets/js/script.js" as="script">
+  <link rel="preload" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" as="script" crossorigin="anonymous">
+  <link rel="preload" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" as="script" crossorigin="anonymous">
 
 </head>
 
@@ -218,10 +539,598 @@
           <ul class="grid-list">
 
             <li>
-              <div class="course-card">
-
+              <div class="course-card" data-course-id="uppsc-pm-i-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/course-1.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/cf.webp" width="370" height="220" loading="lazy"
+                    alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">UPPSC</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Start preparing for UPPSC P/M/I With Appreciative Learning! They offer focused training, guidance, and resources to help you succeed in the preliminary exam. Take the first step toward your UPSC journey with expert support.</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(3.9/12345 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 19999.00</span><a href="ab.html">Free Course With Scholarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">23465 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="UPPSC P/M/I" 
+                    data-course-price="19999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="mppsc-prelims-and-mains-or-interview-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/cpp.webp" width="370" height="220" loading="lazy"
+                    alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">8 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">MPPSC</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Prepare for MPPSC Prelims and Mains or Interview with Appreciative Learning and achieve your dream of becoming a civil servant!</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.1 /3456 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 17999.00</span><a href="ab.html">Free Course With Scholarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">7645 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="MPPSC Prelims and Mains or Interview" 
+                    data-course-price="17999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="bpsc-prelims-and-mains-or-interview-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/py.webp" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">BPSC</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Prepare for BPSC Prelims and Mains or Interview with Appreciative Learning and achieve your dream of becoming a civil servant!</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(3.6 /4575 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 21999.00</span><a href="ab.html">Free Course With Scholarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">1326 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="BPSC Prelims and Mains or Interview" 
+                    data-course-price="21999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="ssc-cgl-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/jv.webp" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">SSC CGL</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Start preparing for SSC CGL with Appreciative Learning They offer focused training, guidance, and resources to help you succeed in the preliminary exam. Take the first step toward your UPSC journey with expert support.</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(3.9 /4575 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 13999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">1326 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="SSC CGL" 
+                    data-course-price="13999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="ssc-mts-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/js.webp" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">SSC MTS</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Start preparing for SSC MTS with Appreciative Learning They offer focused training, guidance, and resources to help you succeed in the preliminary exam. Take the first step toward your UPSC journey with expert support.</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.1 /4575 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 12999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">1326 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="SSC MTS" 
+                    data-course-price="12999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="ssc-chsl-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/htc.webp" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">SSC CHSL</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Start preparing for SSC CHSL with Appreciative Learning They offer focused training, guidance, and resources to help you succeed in the preliminary exam. Take the first step toward your UPSC journey with expert support.</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.7 /4575 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 14999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">1326 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="SSC CHSL" 
+                    data-course-price="14999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="railway-alp-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/sca.webp" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">A.L.P</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Start preparing for Railway ALP with Appreciative Learning They offer focused training, guidance, and resources to help you succeed in the preliminary exam. Take the first step toward your UPSC journey with expert support.</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.1 /4575 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 9999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">1326 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="Railway ALP" 
+                    data-course-price="9999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="railway-technician-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/rus.webp" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Technician</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Start preparing for Railway Technician with Appreciative Learning They offer focused training, guidance, and resources to help you succeed in the preliminary exam. Take the first step toward your UPSC journey with expert support.</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.2 /4575 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 7999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">1326 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="Railway Technician" 
+                    data-course-price="7999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card" data-course-id="railway-group-d-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/go.webp" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Group-D</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Start preparing for Railway Group-D with Appreciative Learning They offer focused training, guidance, and resources to help you succeed in the preliminary exam. Take the first step toward your UPSC journey with expert support.</a>
+                  </h3>
+
+                  <div class="wrapper">
+
+                    <div class="rating-wrapper">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <p class="rating-text">(4.0 /4575 Rating)</p>
+
+                  </div>
+
+                  <data class="price" value="35"><span>&#8377; 4999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
+
+                  <ul class="card-meta-list">
+
+                    <li class="card-meta-item">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">A.T. Lessons</span>
+                    </li>
+
+                    <li class="card-meta-item">
+                      <ion-icon name="people-outline" aria-hidden="true"></ion-icon>
+
+                      <span class="span">1326 Students</span>
+                    </li>
+
+                  </ul>
+
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="Railway Group-D" 
+                    data-course-price="4999">
+                    Buy Now
+                  </button>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+          <br>
+          <ul class="grid-list">
+
+            <li>
+              <div class="course-card" data-course-id="upsc-prelims-2024">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="./assets/cim/cn.webp" width="370" height="220" loading="lazy"
                     alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
                 </figure>
 
@@ -271,16 +1180,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="UPSC Prelims" 
+                    data-course-price="13999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="course-card">
-
+              <div class="course-card" data-course-id="upsc-prelims-and-mains-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/i2.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/ds.webp" width="370" height="220" loading="lazy"
                     alt="Java Programming Masterclass for Software Developers" class="img-cover">
                 </figure>
 
@@ -330,16 +1245,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="UPSC Prelims and Mains" 
+                    data-course-price="31999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="course-card">
-
+              <div class="course-card" data-course-id="upsc-interview-preparation-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/i3.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/fd.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -389,20 +1310,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="UPSC Interview Preparation" 
+                    data-course-price="11999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
 
-          </ul>
-          <br>
-          <ul class="grid-list">
-
             <li>
-              <div class="course-card">
-
+              <div class="course-card" data-course-id="uppsc-pm-i-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/up2.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/db.webp" width="370" height="220" loading="lazy"
                     alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
                 </figure>
 
@@ -452,16 +1375,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="UPPSC P/M/I" 
+                    data-course-price="19999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="course-card">
-
+              <div class="course-card" data-course-id="mppsc-prelims-and-mains-or-interview-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/mp4.png" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/cn.webp" width="370" height="220" loading="lazy"
                     alt="Java Programming Masterclass for Software Developers" class="img-cover">
                 </figure>
 
@@ -511,16 +1440,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="MPPSC Prelims and Mains or Interview" 
+                    data-course-price="17999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
 
             <li>
-              <div class="course-card">
-
+              <div class="course-card" data-course-id="bpsc-prelims-and-mains-or-interview-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/bp12.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/dq.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -570,15 +1505,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="BPSC Prelims and Mains or Interview" 
+                    data-course-price="21999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
-            <li>
-              <div class="course-card">
 
+            <li>
+              <div class="course-card" data-course-id="ssc-cgl-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/sscc.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/cc.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -612,8 +1554,6 @@
 
                   <data class="price" value="35"><span>&#8377; 13999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
 
-
-
                   <ul class="card-meta-list">
 
                     <li class="card-meta-item">
@@ -630,15 +1570,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="SSC CGL" 
+                    data-course-price="13999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
-            <li>
-              <div class="course-card">
 
+            <li>
+              <div class="course-card" data-course-id="ssc-mts-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/sscm.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/dis.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -672,8 +1619,6 @@
 
                   <data class="price" value="35"><span>&#8377; 12999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
 
-
-
                   <ul class="card-meta-list">
 
                     <li class="card-meta-item">
@@ -690,15 +1635,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="SSC MTS" 
+                    data-course-price="12999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
-            <li>
-              <div class="course-card">
 
+            <li>
+              <div class="course-card" data-course-id="ssc-chsl-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/sscch.jpg" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/cd.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -732,8 +1684,6 @@
 
                   <data class="price" value="35"><span>&#8377; 14999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
 
-
-
                   <ul class="card-meta-list">
 
                     <li class="card-meta-item">
@@ -750,15 +1700,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="SSC CHSL" 
+                    data-course-price="14999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
-            <li>
-              <div class="course-card">
 
+            <li>
+              <div class="course-card" data-course-id="railway-alp-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/rrba.png" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/ai.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -792,8 +1749,6 @@
 
                   <data class="price" value="35"><span>&#8377; 9999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
 
-
-
                   <ul class="card-meta-list">
 
                     <li class="card-meta-item">
@@ -810,15 +1765,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="Railway ALP" 
+                    data-course-price="9999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
-            <li>
-              <div class="course-card">
 
+            <li>
+              <div class="course-card" data-course-id="railway-technician-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/rrbt.png" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/ml.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -852,8 +1814,6 @@
 
                   <data class="price" value="35"><span>&#8377; 7999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
 
-
-
                   <ul class="card-meta-list">
 
                     <li class="card-meta-item">
@@ -870,15 +1830,22 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="Railway Technician" 
+                    data-course-price="7999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
-            <li>
-              <div class="course-card">
 
+            <li>
+              <div class="course-card" data-course-id="railway-group-d-2024">
                 <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
-                  <img src="./assets/images/rrbd.png" width="370" height="220" loading="lazy"
+                  <img src="./assets/cim/nu.webp" width="370" height="220" loading="lazy"
                     alt="The Complete Camtasia Course for Content Creators" class="img-cover">
                 </figure>
 
@@ -912,8 +1879,6 @@
 
                   <data class="price" value="35"><span>&#8377; 4999.00</span><a href="ab.html">Free Course With Scholoarship</a></data>
 
-
-
                   <ul class="card-meta-list">
 
                     <li class="card-meta-item">
@@ -930,15 +1895,20 @@
 
                   </ul>
 
+                  <button 
+                    class="buy-now-btn" 
+                    data-course-name="Railway Group-D" 
+                    data-course-price="4999">
+                    Buy Now
+                  </button>
+
                 </div>
 
               </div>
             </li>
 
           </ul>
-
-
-
+          <br>
           <a href="ab.html" class="btn has-before">
             <span class="">Scholarship Form</span>
 
@@ -1179,14 +2149,15 @@
   <!-- 
     - custom js link
   -->
+  <link rel="preload" href="./assets/js/script.js" as="script">
+  <link rel="preload" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" as="script" crossorigin="anonymous">
+  <link rel="preload" href="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" as="script" crossorigin="anonymous">
+
   <script src="./assets/js/script.js" defer></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" crossorigin="anonymous"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" crossorigin="anonymous"></script>
 
-  <!-- 
-    - ionicon link
-  -->
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+  <!-- Razorpay Checkout Script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </body>
-
 </html>
