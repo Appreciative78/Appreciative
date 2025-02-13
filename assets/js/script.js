@@ -1,4 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Fully Loaded');
+
+    // Debug element existence
+    const courseModalOverlay = document.getElementById('courseModalOverlay');
+    const buyNowButtons = document.querySelectorAll('.buy-now-btn');
+    const courseCards = document.querySelectorAll('.course-card');
+
+    console.log('Course Modal Overlay:', courseModalOverlay);
+    console.log('Buy Now Buttons:', buyNowButtons.length);
+    console.log('Course Cards:', courseCards.length);
+
+    // Detailed button logging
+    buyNowButtons.forEach((button, index) => {
+        console.log(`Button ${index}:`, button);
+        console.log(`Button Parent:`, button.parentElement);
+        console.log(`Closest Course Card:`, button.closest('.course-card'));
+    });
+
+    // Fallback event listener
+    document.body.addEventListener('click', (event) => {
+        const buyNowButton = event.target.closest('.buy-now-btn');
+        if (buyNowButton) {
+            console.log('Buy Now Button Clicked (Body Listener):', buyNowButton);
+            const courseCard = buyNowButton.closest('.course-card');
+            if (courseCard) {
+                openCourseModal(courseCard);
+            }
+        }
+    });
+
+    function openCourseModal(courseCard) {
+        console.log('Attempting to open modal for:', courseCard);
+        
+        if (!courseModalOverlay) {
+            console.error('Course modal overlay not found!');
+            return;
+        }
+
+        // Rest of your existing openCourseModal logic
+        // ... (keep the existing implementation)
+        document.addEventListener('DOMContentLoaded', () => {
     const courseCards = document.querySelectorAll('.course-card');
     const courseModalOverlay = document.getElementById('courseModalOverlay');
     const courseModalCloseButton = document.getElementById('courseModalCloseButton');
@@ -221,3 +262,7 @@ function initiateRazorpayPayment(amount) {
         });
     });
 }
+
+    }
+});
+
