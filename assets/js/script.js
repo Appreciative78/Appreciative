@@ -1,4 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initiateRazorpayPayment(amount) {
+    console.log(`Attempting to create order for ₹${amount}`);
+    
+    // Change the URL to use the full path
+    fetch('https://www.appreciativelearning.in/api/payment/create-order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ amount: amount })
+    })
+    .then(response => {
+        if (!response.ok) {
+            // Log more detailed error information
+            console.error('Response status:', response.status);
+            console.error('Response text:', response.statusText);
+            return response.text().then(text => {
+                throw new Error(`Order creation failed: ${response.status} - ${text}`);
+            });
+        }
+        return response.json();
+    })
+    // ... rest of the existing code
+    document.addEventListener('DOMContentLoaded', () => {
     const courseCards = document.querySelectorAll('.course-card');
     const courseModalOverlay = document.getElementById('courseModalOverlay');
     const courseModalCloseButton = document.getElementById('courseModalCloseButton');
@@ -217,4 +240,6 @@ function initiateRazorpayPayment(amount) {
             text: 'Could not initialize payment. Please try again.'
         });
     });
+}
+
 }
