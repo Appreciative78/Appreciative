@@ -1,46 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM Fully Loaded');
 
-    // Debug element existence
-    const courseModalOverlay = document.getElementById('courseModalOverlay');
-    const buyNowButtons = document.querySelectorAll('.buy-now-btn');
-    const courseCards = document.querySelectorAll('.course-card');
-
-    console.log('Course Modal Overlay:', courseModalOverlay);
-    console.log('Buy Now Buttons:', buyNowButtons.length);
-    console.log('Course Cards:', courseCards.length);
-
-    // Detailed button logging
-    buyNowButtons.forEach((button, index) => {
-        console.log(`Button ${index}:`, button);
-        console.log(`Button Parent:`, button.parentElement);
-        console.log(`Closest Course Card:`, button.closest('.course-card'));
-    });
-
-    // Fallback event listener
-    document.body.addEventListener('click', (event) => {
-        const buyNowButton = event.target.closest('.buy-now-btn');
-        if (buyNowButton) {
-            console.log('Buy Now Button Clicked (Body Listener):', buyNowButton);
-            const courseCard = buyNowButton.closest('.course-card');
-            if (courseCard) {
-                openCourseModal(courseCard);
-            }
-        }
-    });
-
-    function openCourseModal(courseCard) {
-        console.log('Attempting to open modal for:', courseCard);
-        
-        if (!courseModalOverlay) {
-            console.error('Course modal overlay not found!');
-            return;
-        }
-
-        // Rest of your existing openCourseModal logic
-        // ... (keep the existing implementation)
-        document.addEventListener('DOMContentLoaded', () => {
-    const courseCards = document.querySelectorAll('.course-card');
     const courseModalOverlay = document.getElementById('courseModalOverlay');
     const courseModalCloseButton = document.getElementById('courseModalCloseButton');
     const courseModalImage = document.getElementById('courseModalImage');
@@ -75,8 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const courseName = courseCard.querySelector('.card-title').textContent;
-        const coursePrice = courseCard.querySelector('.price').textContent;
+        const courseName = courseCard.querySelector('.card-title').textContent.trim();
+        const coursePrice = courseCard.querySelector('.price span').textContent;
         const courseImage = courseCard.querySelector('.img-cover').src;
         
         const courseId = courseCard.getAttribute('data-course-id') || 
@@ -176,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initiateRazorpayPayment(amount) {
+    // Your existing payment initiation code
     console.log(`Attempting to create order for ₹${amount}`);
     
     fetch('https://www.appreciativelearning.in/api/payment/create-order', {
@@ -185,84 +146,5 @@ function initiateRazorpayPayment(amount) {
         },
         body: JSON.stringify({ amount: amount })
     })
-    .then(response => {
-        if (!response.ok) {
-            console.error('Response status:', response.status);
-            console.error('Response text:', response.statusText);
-            return response.text().then(text => {
-                throw new Error(`Order creation failed: ${response.status} - ${text}`);
-            });
-        }
-        return response.json();
-    })
-    .then(data => {
-        const options = {
-            key: 'rzp_test_tkNtqrcihTQnwN',
-            amount: data.amount,
-            currency: data.currency,
-            name: 'Appreciative Learning',
-            description: 'UPPSC P/M/I Exam Preparation Course',
-            order_id: data.id,
-            handler: function (response) {
-                fetch('https://www.appreciativelearning.in/api/payment/verify-payment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        razorpay_order_id: response.razorpay_order_id,
-                        razorpay_payment_id: response.razorpay_payment_id,
-                        razorpay_signature: response.razorpay_signature
-                    })
-                })
-                .then(verifyResponse => verifyResponse.json())
-                .then(verifyData => {
-                    if (verifyData.status === 'success') {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Payment Successful!',
-                            text: 'Your course access has been granted.'
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Payment Failed',
-                            text: 'There was an issue processing your payment.'
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Verification Error:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Payment Error',
-                        text: 'An unexpected error occurred.'
-                    });
-                });
-            },
-            prefill: {
-                name: '', 
-                email: '', 
-                contact: ''
-            },
-            theme: {
-                color: '#3498db'
-            }
-        };
-        
-        const rzp1 = new Razorpay(options);
-        rzp1.open();
-    })
-    .catch(error => {
-        console.error('Payment Initialization Error:', error);
-        Swal.fire({
-            icon: 'error',
-            title: 'Payment Error',
-            text: 'Could not initialize payment. Please try again.'
-        });
-    });
+    // ... rest of the payment code
 }
-
-    }
-});
-
