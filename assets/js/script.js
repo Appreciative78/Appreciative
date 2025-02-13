@@ -1,27 +1,4 @@
-function initiateRazorpayPayment(amount) {
-    console.log(`Attempting to create order for ₹${amount}`);
-    
-    // Change the URL to use the full path
-    fetch('https://www.appreciativelearning.in/api/payment/create-order', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ amount: amount })
-    })
-    .then(response => {
-        if (!response.ok) {
-            // Log more detailed error information
-            console.error('Response status:', response.status);
-            console.error('Response text:', response.statusText);
-            return response.text().then(text => {
-                throw new Error(`Order creation failed: ${response.status} - ${text}`);
-            });
-        }
-        return response.json();
-    })
-    // ... rest of the existing code
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const courseCards = document.querySelectorAll('.course-card');
     const courseModalOverlay = document.getElementById('courseModalOverlay');
     const courseModalCloseButton = document.getElementById('courseModalCloseButton');
@@ -157,11 +134,10 @@ function initiateRazorpayPayment(amount) {
     });
 });
 
-// Existing Razorpay payment function (with previous modifications)
 function initiateRazorpayPayment(amount) {
     console.log(`Attempting to create order for ₹${amount}`);
     
-    fetch('/api/payment/create-order', {
+    fetch('https://www.appreciativelearning.in/api/payment/create-order', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -170,7 +146,11 @@ function initiateRazorpayPayment(amount) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error(`Order creation failed: ${response.status}`);
+            console.error('Response status:', response.status);
+            console.error('Response text:', response.statusText);
+            return response.text().then(text => {
+                throw new Error(`Order creation failed: ${response.status} - ${text}`);
+            });
         }
         return response.json();
     })
@@ -183,7 +163,7 @@ function initiateRazorpayPayment(amount) {
             description: 'UPPSC P/M/I Exam Preparation Course',
             order_id: data.id,
             handler: function (response) {
-                fetch('/api/payment/verify-payment', {
+                fetch('https://www.appreciativelearning.in/api/payment/verify-payment', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -220,7 +200,7 @@ function initiateRazorpayPayment(amount) {
                 });
             },
             prefill: {
-                name: '',
+                name: '', 
                 email: '', 
                 contact: ''
             },
@@ -240,6 +220,4 @@ function initiateRazorpayPayment(amount) {
             text: 'Could not initialize payment. Please try again.'
         });
     });
-}
-
 }
